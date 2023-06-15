@@ -28,7 +28,7 @@ jobs:
       with:
         file: SimpleMvvm/SimpleMvvm/SimpleMvvm.csproj
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet workload restore
       working-directory: SimpleMvvm
     - name: Build
       run: dotnet build --no-restore
