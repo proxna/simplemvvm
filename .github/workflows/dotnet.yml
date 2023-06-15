@@ -27,9 +27,11 @@ jobs:
       uses: KageKirin/get-csproj-version@v0
       with:
         file: SimpleMvvm/SimpleMvvm/SimpleMvvm.csproj
-    - name: Restore dependencies
+    - name: Restore workload dependencies
       run: dotnet workload restore
       working-directory: SimpleMvvm
+    - name: Restore workload
+      run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
       working-directory: SimpleMvvm
