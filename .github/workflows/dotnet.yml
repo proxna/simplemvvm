@@ -30,8 +30,9 @@ jobs:
     - name: Restore workload dependencies
       run: dotnet workload restore
       working-directory: SimpleMvvm
-    - name: Restore workload
+    - name: Restore dependencies
       run: dotnet restore
+      working-directory: SimpleMvvm
     - name: Build
       run: dotnet build --no-restore
       working-directory: SimpleMvvm
