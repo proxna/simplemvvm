@@ -27,17 +27,20 @@ jobs:
       uses: KageKirin/get-csproj-version@v0
       with:
         file: SimpleMvvm/SimpleMvvm/SimpleMvvm.csproj
-    - name: Go to directory
-      run: cd SimpleMvvm/SimpleMvvm
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: SimpleMvvm
     - name: Build
       run: dotnet build --no-restore
+      working-directory: SimpleMvvm
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: SimpleMvvm
     - name: Set Nuget Source
       run: dotnet nuget add source --username proxna --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/proxna/index.json"
     - name: Create Package
       run: dotnet pack --configuration Release
+      working-directory: SimpleMvvm/SimpleMvvm
     - name: Publish Package
       run: dotnet nuget push "bin/Release/SimpleMvvm.${{ steps.test.package_version.version }}.nupkg"  --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+      working-directory: SimpleMvvm/SimpleMvvm
