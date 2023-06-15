@@ -26,6 +26,8 @@ jobs:
       with:
         file: SimpleMvvm/SimpleMvvm/SimpleMvvm.csproj
         regex: '^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)$'
+    - name: Show version
+      run: echo ${{ steps.test.package_version.version }}
     - name: Install MAUI workload
       run: dotnet workload install maui
       working-directory: SimpleMvvm
