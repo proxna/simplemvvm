@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -27,6 +27,9 @@ jobs:
       uses: KageKirin/get-csproj-version@v0
       with:
         file: SimpleMvvm/SimpleMvvm/SimpleMvvm.csproj
+    - name: Install MAUI workload
+      run: dotnet workload install maui
+      working-directory: SimpleMvvm
     - name: Restore workload dependencies
       run: dotnet workload restore
       working-directory: SimpleMvvm
