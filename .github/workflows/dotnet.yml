@@ -49,5 +49,5 @@ jobs:
       run: dotnet pack --configuration Release /p:PackageVersion=${{ steps.package_version.outputs.version }}.${{github.run_number}}
       working-directory: SimpleMvvm/SimpleMvvm
     - name: Publish Package
-      run: dotnet nuget push "bin/Release/SimpleMvvm.${{ steps.package_version.outputs.version }}.${{github.run_number}}.nupkg"  --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+      run: dotnet nuget push "bin/Release/SimpleMvvm.${{ steps.package_version.outputs.version }}.${{github.run_number}}.nupkg"  --api-key ${{ secrets.NUGET_TOKEN }} --source "github"
       working-directory: SimpleMvvm/SimpleMvvm
